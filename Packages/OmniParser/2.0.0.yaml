@@ -1,0 +1,26 @@
+description: >
+  OmniParser is a comprehensive method for parsing user interface screenshots into structured and easy-to-understand elements,
+  which significantly enhances the ability of GPT-4V to generate actions that can be accurately grounded in the corresponding
+  regions of the interface.
+
+icon: https://github.com/microsoft/OmniParser/blob/547cb8f743e3ceca030ada2c9c5eb555349fbc00/imgs/logo.png
+readme: https://github.com/microsoft/OmniParser/blob/547cb8f743e3ceca030ada2c9c5eb555349fbc00/README.md
+homepage: https://github.com/microsoft/OmniParser
+license: CC-BY-4.0
+
+source:
+  type: git
+  url: https://github.com/microsoft/OmniParser.git
+  commit: dcca70c364c08f93104070c6811a6d13cd443774
+
+pre_install:
+  - type: script
+    name: install_python
+    args: '3.12'
+
+post_install:
+  - type: bash
+    args: |
+      pip install -r requirements.txt -y
+      for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.json,generation_config.json,model.safetensors}; do huggingface-cli download microsoft/OmniParser-v2.0 "$f" --local-dir weights; done
+      mv weights/icon_caption weights/icon_caption_florence
