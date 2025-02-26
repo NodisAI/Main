@@ -24,11 +24,11 @@ else
 fi
 
 # Create directories if they don't exist
-mkdir -p "$working_dir"
-mkdir -p "$cache_dir"
+mkdir -p "$WORKING_DIR"
+mkdir -p "$CACHE_DIR"
 
 # Download Python
-cache_file="$cache_dir/python-$version-$system"
+cache_file="$CACHE_DIR/python-$version-$system"
 if [ ! -f "$cache_file" ]; then
     echo "Downloading Python $version for $system..."
     curl -L -o "$cache_file" "$url_base/python-headless-$version-$system.zip"
@@ -37,6 +37,6 @@ else
 fi
 
 # Extract or install Python
-unzip -o "$cache_file" -d "$working_dir"
+unzip -o "$cache_file" -d "$WORKING_DIR"
 
-echo "Python $version installed successfully in $working_dir"
+echo "Python $version installed successfully in $WORKING_DIR"
