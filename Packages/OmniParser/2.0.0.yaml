@@ -3,7 +3,7 @@ description: >
   which significantly enhances the ability of GPT-4V to generate actions that can be accurately grounded in the corresponding
   regions of the interface.
 
-icon: https://github.com/microsoft/OmniParser/blob/547cb8f743e3ceca030ada2c9c5eb555349fbc00/imgs/logo.png
+icon: https://raw.githubusercontent.com/microsoft/OmniParser/547cb8f743e3ceca030ada2c9c5eb555349fbc00/imgs/logo.png
 readme: https://raw.githubusercontent.com/microsoft/OmniParser/547cb8f743e3ceca030ada2c9c5eb555349fbc00/README.md
 homepage: https://github.com/microsoft/OmniParser
 license: CC-BY-4.0
