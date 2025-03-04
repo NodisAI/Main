@@ -8,19 +8,21 @@ readme: https://raw.githubusercontent.com/microsoft/OmniParser/547cb8f743e3ceca0
 homepage: https://github.com/microsoft/OmniParser
 license: CC-BY-4.0
 
-source:
-  type: git
+source: !git
   url: https://github.com/microsoft/OmniParser.git
   commit: dcca70c364c08f93104070c6811a6d13cd443774
 
 pre_install:
-  - type: script
+  - !script
     name: install_python
     args: '3.12'
+    env_add_path: 
+      - python/bin
+      - python/Scripts
 
 post_install:
-  - type: bash
-    args: |
-      pip install -r requirements.txt -y
+  - !bash
+    command: |
+      pip3 install -r requirements.txt -y
       for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.json,generation_config.json,model.safetensors}; do huggingface-cli download microsoft/OmniParser-v2.0 "$f" --local-dir weights; done
       mv weights/icon_caption weights/icon_caption_florence

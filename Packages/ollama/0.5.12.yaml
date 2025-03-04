@@ -1,0 +1,64 @@
+description: >
+  Get up and running with large language models.
+  Run Llama 3.3, DeepSeek-R1, Phi-4, Mistral, Gemma 2, and other models, locally.
+
+icon: https://github.com/ollama/ollama/assets/3325447/0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7
+readme: https://raw.githubusercontent.com/ollama/ollama/8c13cfa4dd35a79c983eb19b5ec2be7ffa220b69/README.md
+homepage: https://ollama.com
+license: MIT
+
+runtimes:
+  - !executable_bundle
+    id: ollama
+    distributions: 
+      win-x64:
+        url: https://github.com/ollama/ollama/releases/download/v0.5.12/ollama-windows-amd64.zip
+        checksum: !sha256 315968fe0925a8efbec0ab414862f1acac9c4544b1307d0b0201647cacf851c4
+        execution: 
+          lifecycle: singleton
+          command: ollama.exe serve
+      win-arm64: 
+        url: https://github.com/ollama/ollama/releases/download/v0.5.12/ollama-windows-arm64.zip
+        checksum: !sha256 7043418b2cb7b605d63d7095dc8504a7100c9c39788c23ffa9ccdbb3c82cc9fe
+        execution: 
+          lifecycle: singleton
+          command: ollama.exe serve
+      osx-universal: 
+        url: https://github.com/ollama/ollama/releases/download/v0.5.12/Ollama-darwin.zip
+        checksum: !sha256 ad7ee1b95a2e44c55a1313f7bdb02e192df9fa71a5c31f6ea55c5694c3a2d994
+        execution: 
+          lifecycle: singleton
+          command: Ollama.app/Contents/MacOS/Ollama serve
+
+nodes:
+  - !RESTful
+    name: Generate
+    description: Generate a completion with a specified model
+    runtimes:
+      - ollama>=0.5.12
+    data_inputs:
+      - id: 1
+        name: Model name
+        data: !str
+          value: llama3.2
+      - id: 2
+        name: User input
+        data: !str
+          value: Why is the sky blue?
+    data_outputs:
+      - id: 3
+        name: Model output
+        data: !str
+    request:
+      method: POST
+      url: http://127.0.0.1:11434/generate
+      headers:
+        # Authorization: Bearer {{api_key}}
+        Content-Type: application/json
+      body: '{"model":"$1","prompt":"$2","stream":false}'
+    response:
+      # validation:
+      #   success_status: [200, 201]
+      #   error_path: $.error.message
+      body_mapping:
+        3: $.response
