@@ -8,9 +8,11 @@ readme: https://raw.githubusercontent.com/microsoft/OmniParser/547cb8f743e3ceca0
 homepage: https://github.com/microsoft/OmniParser
 license: CC-BY-4.0
 
-source: !git
-  url: https://github.com/microsoft/OmniParser.git
-  commit: dcca70c364c08f93104070c6811a6d13cd443774
+runtimes: 
+  - !git
+    id: OmniParser
+    url: https://github.com/microsoft/OmniParser.git
+    commit: dcca70c364c08f93104070c6811a6d13cd443774
 
 pre_install:
   - !script
