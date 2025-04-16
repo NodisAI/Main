@@ -1,0 +1,30 @@
+description: |
+  Provides search and crawl functionality using Search1API.
+  Supported services: Google, Bing, DuckDuckGo, Yahoo, Reddit, X, Youtube, GitHub, ArXiv, Weixin, Bilibili, IMDB, Wikipedia and more.
+  Supported tools: searching, news, crawling, maps, trending topics, reasoning, and more.
+icon: https://avatars.githubusercontent.com/u/134143178?v=4
+readme: https://raw.githubusercontent.com/fatwang2/search1api-mcp/refs/heads/main/README.md
+homepage: https://github.com/fatwang2/search1api-mcp
+license: MIT
+
+runtimes:
+- !mcp
+  id: search1api
+  pre_installs:
+  - !git
+    url: https://github.com/fatwang2/search1api-mcp.git
+  - !bash
+    commands:
+      - cd search1api-mcp
+      - bun install
+      - bun run build
+  transport: !stdio
+    workdir: search1api-mcp
+    command: bun
+    args:
+    - start
+    env:
+      SEARCH1API_KEY:
+        description: |
+          1. Register at [Search1API](https://search1api.com/)
+          2. Get your API key from your dashboard
