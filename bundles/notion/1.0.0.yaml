@@ -4,7 +4,8 @@ readme: https://raw.githubusercontent.com/makenotion/notion-mcp-server/refs/head
 homepage: https://github.com/makenotion/notion-mcp-server
 license: MIT
 runtimes:
-- id: notionApi
+- !mcp
+  id: notionApi
   transport: !stdio
     command: bun
     args:
