@@ -6,6 +6,18 @@ icon: https://avatars.githubusercontent.com/u/134143178?v=4
 readme: https://raw.githubusercontent.com/fatwang2/search1api-mcp/refs/heads/main/README.md
 homepage: https://github.com/fatwang2/search1api-mcp
 license: MIT
+tags:
+- search
+- crawl
+- reasoning
+- news
+- maps
+- trending
+- topics
+- google
+- bing
+- duckduckgo
+- yahoo
 
 runtimes:
 - !mcp

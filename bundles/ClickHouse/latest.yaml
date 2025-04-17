@@ -1,0 +1,47 @@
+description: |
+  Provides nodes for ClickHouse database interaction, including querying and data manipulation.
+icon: https://avatars.githubusercontent.com/u/54801242?s=200&v=4
+readme: https://raw.githubusercontent.com/ClickHouse/mcp-clickhouse/refs/heads/main/README.md
+homepage: https://github.com/ClickHouse/mcp-clickhouse
+license: MIT
+tags:
+- database
+- clickhouse
+- sql
+
+runtimes:
+- !mcp
+  id: mcp-clickhouse
+  transport: !stdio
+    command: uv
+    args:
+    - "run"
+    - "--with"
+    - "mcp-clickhouse"
+    - "--python"
+    - "3.13"
+    - "mcp-clickhouse"
+    env:
+      CLICKHOUSE_HOST:
+        description: ClickHouse server address
+        default: localhost
+      CLICKHOUSE_PORT:
+        description: ClickHouse server port
+        default: 8123
+      CLICKHOUSE_USER:
+        description: ClickHouse username
+        default: default
+      CLICKHOUSE_PASSWORD:
+        description: ClickHouse password
+      CLICKHOUSE_SECURE:
+        description: Secure connection to ClickHouse server (true/false)
+        default: true
+      CLICKHOUSE_VERIFY:
+        description: Verify SSL certificate (true/false)
+        default: true
+      CLICKHOUSE_CONNECT_TIMEOUT:
+        description: Connection timeout in seconds
+        default: 30
+      CLICKHOUSE_SEND_RECEIVE_TIMEOUT:
+        description: Send and receive timeout in seconds
+        default: 30

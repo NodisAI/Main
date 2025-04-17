@@ -1,0 +1,38 @@
+description: |
+  Provides read-only access to PostgreSQL databases. 
+  This bundle enables you to inspect database schemas and execute read-only queries.
+icon: https://www.postgresql.org/media/img/about/press/elephant.png
+readme: https://raw.githubusercontent.com/modelcontextprotocol/servers/refs/heads/main/src/postgres/README.md
+homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/postgres
+license: MIT
+tags:
+- database
+- sql
+- postgres
+- postgresql
+
+runtimes:
+- !mcp
+  id: postgres
+  transport: !stdio
+    command: bun
+    args:
+    - "x"
+    - "-y"
+    - "@modelcontextprotocol/server-postgres"
+    - "postgresql://$USERNAME:$PASSWORD@$HOST:$PORT/$DATABASE"
+    env:
+      USERNAME:
+        description: PostgreSQL username
+        default: postgres
+      PASSWORD:
+        description: PostgreSQL password
+      HOST:
+        description: PostgreSQL host
+        default: localhost
+      PORT:
+        description: PostgreSQL port
+        default: 5432
+      DATABASE:
+        description: PostgreSQL database name
+        default: mydb

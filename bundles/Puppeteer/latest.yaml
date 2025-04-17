@@ -1,0 +1,30 @@
+description: |
+  Provides browser automation capabilities using Puppeteer. 
+  This bundle enables you to interact with web pages, take screenshots, and execute JavaScript in a real browser environment.
+icon: https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png
+readme: https://raw.githubusercontent.com/modelcontextprotocol/servers/refs/heads/main/src/puppeteer/README.md
+homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer
+license: MIT
+tags:
+- browser
+- automation
+- testing
+- web-scraping
+- puppeteer
+
+runtimes:
+- !mcp
+  id: mcp-puppeteer
+  transport: !stdio
+    command: bun
+    args:
+    - "x"
+    - "-y"
+    - "@modelcontextprotocol/server-puppeteer"
+    env:
+      PUPPETEER_LAUNCH_OPTIONS:
+        description: JSON string of launch options for Puppeteer. See [Puppeteer Launch Options](https://pptr.dev/#?product=Puppeteer&show=api-puppeteerlaunchoptions) for more details.
+        default: '{"headless": true, "args": ["--no-sandbox", "--disable-setuid-sandbox"]}'
+      ALLOW_DANGEROUS:
+        description: Allow dangerous operations in Puppeteer. Set to true to allow, false to disallow.
+        default: false

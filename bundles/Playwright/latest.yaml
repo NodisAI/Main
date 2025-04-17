@@ -1,0 +1,27 @@
+description: |
+  Provides browser automation capabilities using Playwright. 
+  This bundle provides nodes to interact with web pages, take screenshots, generate test code, web scraps the page and execute JavaScript in a real browser environment.
+icon: https://avatars.githubusercontent.com/u/10337030?v=4
+readme: https://raw.githubusercontent.com/executeautomation/mcp-playwright/refs/heads/main/README.md
+homepage: https://github.com/executeautomation/mcp-playwright
+license: MIT
+tags:
+- browser
+- automation
+- testing
+- web-scraping
+- playwright
+
+runtimes:
+- !mcp
+  id: playwright
+  pre_installs:
+  - !bash
+    commands:
+      - bun install @executeautomation/playwright-mcp-server
+  transport: !stdio
+    command: bun
+    args:
+    - "x"
+    - "-y"
+    - "@executeautomation/playwright-mcp-server"

@@ -1,14 +1,21 @@
-description: Official Notion Workflow Bundle
+description: |
+  Provides nodes to interact with Notion API.
+  This bundle allows you to create, read, update, and delete pages, and blocks in Notion.
 icon: https://github.com/user-attachments/assets/6c07003c-8455-4636-b298-d60ffdf46cd8
 readme: https://raw.githubusercontent.com/makenotion/notion-mcp-server/refs/heads/main/README.md
 homepage: https://github.com/makenotion/notion-mcp-server
 license: MIT
+tags:
+- notion
+- note
+
 runtimes:
 - !mcp
   id: notionApi
   transport: !stdio
     command: bun
     args:
+    - "x"
     - "-y"
     - "@notionhq/notion-mcp-server"
     env:
