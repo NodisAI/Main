@@ -19,6 +19,7 @@ runtimes:
   - !bash
     commands:
       - bun install @executeautomation/playwright-mcp-server
+      - bun playwright install --with-deps
   transport: !stdio
     command: bun
     args:
